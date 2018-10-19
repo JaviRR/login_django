@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login and Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Registration</h1>
+        <form action="/process_registration" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    {% if message.extra_tags == 'first_name' %}
+                        <li style="color: red;">{{ message }}</li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <label for="first_name">First Name:</label>
+                <input type="text" class="form-control" id="first_name" name="first_name">
+            </div>
+            <div class="form-group">
+                {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    {% if message.extra_tags == 'last_name' %}
+                        <li style="color: red;">{{ message }}</li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <label for="last_name">Last Name:</label>
+                <input type="text" class="form-control" id="last_name" name="last_name">
+            </div>
+            <div class="form-group">
+                {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    {% if message.extra_tags == 'email' %}
+                        <li style="color: red;">{{ message }}</li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="form-group">
+                {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    {% if message.extra_tags == 'password' %}
+                        <li style="color: red;">{{ message }}</li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <label for="Password1">Password:</label>
+                <input type="password" class="form-control" id="Password1" name="password1">
+            </div>
+            <div class="form-group">
+                <label for="Password2">Confirm your Password:</label>
+                <input type="password" class="form-control" id="Password2" name="password2">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Register" />
+        </form>
+        <h1 class="mt-5">Login</h1>
+        <form action="/process_login" method="POST">
+            {% csrf_token %}
+            {% if messages %}
+            <ul>
+            {% for message in messages %}
+                {% if message.extra_tags == 'login' %}
+                    <li style="color: red;">{{ message }}</li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+            {% endif %}        
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="Password">Password:</label>
+                <input type="password" class="form-control" id="Password1" name="password">
+            </div>
+            <input type="submit" class="btn btn-primary mb-5" value="Login" />
+        </form>
+    </div>
+</body>
+</html>
