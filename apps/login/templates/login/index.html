@@ -9,7 +9,6 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2>BULLSHIT</h2>
         <h1>Registration</h1>
         <form action="/process_registration" method="POST">
             {% csrf_token %}
@@ -84,12 +83,12 @@
             </ul>
             {% endif %}        
             <div class="form-group">
-                <label for="email">Email address:</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <label for="emailL">Email address:</label>
+                <input type="email" class="form-control" id="emailL" name="email">
             </div>
             <div class="form-group">
-                <label for="Password">Password:</label>
-                <input type="password" class="form-control" id="Password1" name="password">
+                <label for="PasswordL">Password:</label>
+                <input type="password" class="form-control" id="PasswordL" name="password">
             </div>
             <input type="submit" class="btn btn-primary mb-5" value="Login" />
         </form>

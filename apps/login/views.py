@@ -41,7 +41,7 @@ def process_login(request):
             messages.error(request,value, extra_tags=key)
         return redirect('/')
     else:
-        id = User.objects.last().id
+        id = User.objects.get(email = request.POST['email']).id
         request.session['id'] = id
         messages.success(request, "Successfully registered (or logged in)!")
         return redirect('/success')
