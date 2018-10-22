@@ -71,6 +71,6 @@ class User(models.Model):
 class Quote(models.Model):
     author = models.CharField(max_length=255)
     quote = models.TextField(max_length=1000)
-    user = models.ForeignKey(User,related_name="quotes")
+    user = models.ForeignKey(User,related_name="quotes", on_delete=models.CASCADE)
     liked = models.ManyToManyField(User, related_name="like")
     objects = Validation()
