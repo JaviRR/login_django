@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Quotes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
+</head>
+<body>
+    <div class="container mt-3">
+        <div class="sup_bar mb-4">
+            <h4 class="dinb">Welcome {{ user.first_name }}</h4>
+            <a class="right mr-3" href="/quotes">Back</a>
+            <a href="/logout"><button class="btn btn-primary">Logout</button></a>
+        </div>
+        <h5 class="mb-4">{{ user.first_name}} {{user.last_name}}'s Quotes:</h5>
+        {% if quotes %}
+        {% for quote in quotes %}
+            <div class="quote mb-3 narrow">
+                <p>
+                    <b>{{ quote.author }}:</b> "<i>{{ quote.quote }}</i>"
+                </p>
+            </div>
+        {% endfor %}
+        {% else %}
+            <p>This user hasn't posted any quote yet!</p>
+        {% endif %}
+    </div>
+        
+</body>
+</html>
